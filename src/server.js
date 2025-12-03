@@ -1,6 +1,6 @@
 // Express is a web server application framework for Node.js that allows you to build web applications and APIs. 
  // It provides a set of tools for handling HTTP requests and responses, routing, middleware, and more.
- // its a web server framework that allows you to build web applications and APIs
+ 
  
 
 
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 
-// Meaning Cros Origin Resource Sharing To allow cross-origin requests from different domains (that u want to allow make requests to your api)
+// Meaning "Cros Origin Resource Sharing" To allow cross-origin requests from different domains (that u want to allow make requests to your api)
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 //or allow all origins 
@@ -27,6 +27,7 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 
 // Routes
+//require("./routes/authRoutes");
 app.use("/api/auth", require("./routes/authRoutes"));
 
 const PORT = process.env.PORT || 5000;

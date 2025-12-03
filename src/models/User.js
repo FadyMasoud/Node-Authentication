@@ -20,17 +20,21 @@ const userSchema = new mongoose.Schema(
 );
 
 
-// Encrypt password
+// Encrypt password before saving in Database 
 
 const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 10;
 
-userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
 
-  this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
-  next();
-});
+// pre save hook is a function that runs before a data is saved to the database be a crypted password 
+// is Modified is a function that checks if the password is encrypted before or not 
+
+// userSchema.pre("save", async function (next) {
+//   if (!this.isModified("password")) return next();
+
+//   this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
+//   next();
+// });
 
 // Compare passwords
 userSchema.methods.comparePassword = async function (password) {

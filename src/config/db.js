@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-
+// mongoose is a library that allows you to connect to a MongoDB database from your Node.js application.
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
