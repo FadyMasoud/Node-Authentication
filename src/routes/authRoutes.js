@@ -17,10 +17,10 @@ router.get("/logout", logout);
 
 
 // 1 - using basic auth 
-router.get("/profile", basicAuth, profile);
+// router.get("/profile", basicAuth, profile);
 
 // 3 - using jwt auth 
-// router.get("/profile", jwtauth, profile);
+router.get("/profile", jwtauth, profile);
 
 
 module.exports = router;

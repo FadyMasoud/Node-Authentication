@@ -1,5 +1,5 @@
 const User = require("../models/User");
-// const generateToken = require("../utils/generateToken");
+const generateToken = require("../utils/generateToken");
 
 exports.register = async (req, res) => {
   try {
@@ -49,13 +49,13 @@ exports.login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ msg: "Invalid email or password" });
 
-    // const token = generateToken(user._id);
+    const token = generateToken(user._id);
 
     res
-      // .cookie("token", token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 })
+      .cookie("token", token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 })
       .status(200).json({
         msg: "Logged in successfully",
-        // token,
+        token,
         user: { id: user._id, name: user.name, email: user.email },
       });
 
@@ -70,11 +70,11 @@ exports.login = async (req, res) => {
 exports.profile = async (req, res) => {
 
 
-  return res.status(200).json({ msg: "WELCOME IN PROFILE" });
+  // return res.status(200).json({ msg: "WELCOME IN PROFILE" });
 
 
-    // if (!req.user)
-    // return res.status(401).json({ msg: "No authenticated user" });
+    if (!req.user)
+    return res.status(401).json({ msg: "No authenticated user" });
 
   res.json({
     user: {
